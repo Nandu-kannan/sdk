@@ -11,15 +11,21 @@
     "build": "tsc",
     "test": "vitest run",
     "test:watch": "vitest",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "indexer": "ts-node src/main.ts"
   },
   "dependencies": {
-    "@stellar/stellar-sdk": "^13.0.0"
+    "@stellar/stellar-sdk": "^13.3.0",
+    "apollo-server": "^3.13.0",
+    "better-sqlite3": "^12.6.2",
+    "graphql": "^16.13.0"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.5.0",
-    "vitest": "^2.0.0",
-    "@types/node": "^20.0.0"
+    "vitest": "^2.0.0"
   },
   "license": "MIT",
   "repository": {

@@ -54,7 +54,7 @@ program
   .argument("<amount>", "Contribution amount")
   .argument("<cycle>", "Cycle length in seconds")
   .argument("<maxMembers>", "Maximum number of members")
-  .action(async (name, token, amount, cycle, maxMembers) => {
+  .action(async (name: string, token: string, amount: string, cycle: string, maxMembers: string) => {
     try {
       const { client, keypair, options } = await getClient();
       const params: CreateGroupParams = {
@@ -62,7 +62,7 @@ program
         name,
         token,
         contributionAmount: BigInt(amount),
-        cycleLength: BigInt(cycle),
+        cycleLength: Number(cycle),
         maxMembers: parseInt(maxMembers),
       };
 
@@ -79,7 +79,7 @@ program
   .command("join-group")
   .description("Join an existing group")
   .argument("<groupId>", "Group ID to join")
-  .action(async (groupId) => {
+  .action(async (groupId: string) => {
     try {
       const { client, keypair, options } = await getClient();
       const tx = await client.joinGroup(keypair.publicKey(), parseInt(groupId), keypair.publicKey());
@@ -94,7 +94,7 @@ program
   .command("contribute")
   .description("Contribute to the current round")
   .argument("<groupId>", "Group ID")
-  .action(async (groupId) => {
+  .action(async (groupId: string) => {
     try {
       const { client, keypair, options } = await getClient();
       const tx = await client.contribute(keypair.publicKey(), parseInt(groupId), keypair.publicKey());
@@ -109,7 +109,7 @@ program
   .command("get-group")
   .description("Get group details")
   .argument("<groupId>", "Group ID")
-  .action(async (groupId) => {
+  .action(async (groupId: string) => {
     try {
       const { client, options } = await getClient();
       const group = await client.getGroup(parseInt(groupId));
